@@ -1,0 +1,19 @@
+export default function doUpdate(){
+    let data = {
+        "id": $("#id").val(),
+        "name":$("#name").val(),
+        "password": $("#password").val(),
+        "entrydate":$("#entrydate").val(),
+        "address":$("#address").val(),
+        "email": $("#email").val(),
+        "phone": $("#phone").val()
+    };
+    axios.post("http://localhost/mvc/1101/crud/backend/index.php?action=updateUser",Qs.stringify(data))
+    .then(res => {
+        let response = res['data'];
+        $("#content").html(response['message']);
+    })
+    .catch(err => {
+        console.error(err); 
+    })
+}
